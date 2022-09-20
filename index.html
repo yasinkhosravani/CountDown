@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    
+</head>
+<body style="background-color: rgb(88, 88, 238);">
+    <div style="background-color: red;border: double black 1;width: 75%;height: 15rem; margin: 0 auto;padding-top: 1rem;">
+        <h1 style="text-align: center">CountDown</h1>
+        <h2 id="count" style="text-align: center;padding-top: 1rem;">2:00</h2>
+        <div style="text-align: center ;">
+            <button style="padding: 5px;margin-right: 1rem;" onclick="start()" class="start">Start</button>
+            <button style="padding: 5px;margin-right: 1rem;"onclick="stop()" class="stop">Stop</button>
+            <button style="padding: 5px" onclick="reset()" class="reset">Reset</button>
+        </div>
+    </div>
+    
+</body>
+<script>
+let x = 120
+let countsetInterval;
+function NumToTime(num) { 
+  var hours = Math.floor(num / 60);  
+  var minutes = num % 60;
+  if (minutes + ''.length < 2) {
+    minutes = '0' + minutes; 
+  }
+  return hours + ":" + minutes;
+}
+
+let start = function(){
+    countsetInterval = setInterval(function() {
+    document.getElementsByClassName("start")[0].disabled = true
+    document.getElementsByClassName("stop")[0].disabled = false
+    document.getElementsByClassName("reset")[0].disabled = true      
+    if(x!=0){
+        x=x-1;
+        document.getElementById("count").innerHTML =NumToTime(x)
+
+        
+    }
+    else{alert("fin")
+
+    }
+    }, 1000);
+
+}
+let stop = function(){
+    document.getElementsByClassName("start")[0].disabled = false
+    document.getElementsByClassName("stop")[0].disabled = true
+    document.getElementsByClassName("reset")[0].disabled = false  
+    clearInterval(countsetInterval)
+}
+
+let reset = function(){
+    x=120
+    document.getElementById("count").innerHTML =NumToTime(x)
+    document.getElementsByClassName("start")[0].disabled = false
+    document.getElementsByClassName("stop")[0].disabled = true
+    document.getElementsByClassName("reset")[0].disabled = true 
+}
+
+</script>
+</html>
