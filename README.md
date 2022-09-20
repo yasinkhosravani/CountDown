@@ -1,3 +1,3 @@
 # CountDown
 CountDown with javascript
-Use Cookies
+Use Cookie
